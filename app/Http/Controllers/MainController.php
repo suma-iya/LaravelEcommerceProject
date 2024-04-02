@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Models\Products;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +12,15 @@ class MainController extends Controller
 {
     //
     public function index(){
-        return view('index');
+        $allProducts = Products::all();
+        $newArrivals = Products::where('type','new-arrivals')->get();
+        $hotSales = Products::where('type','sale')->get();
+        $allProducts = Products::all();
+        // $allProducts = Product::all();
+
+        // dd($allProducts);
+        return view('index', compact('allProducts', 'newArrivals', 'hotSales'));
+
     }
     public function cart(){
         return view('cart');

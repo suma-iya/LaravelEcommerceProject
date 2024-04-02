@@ -112,9 +112,12 @@
                                 <!-- <li><a href="{{ URL::to('/blog-details') }}">Blog Details</a></li> -->
                             </ul>
                         </li>
-
+                            @if(session()->has('id'))
+                            <li><a href="{{ URL::to('/logout') }}">Logout</a></li>
+                            @else
                             <li><a href="{{ URL::to('/login') }}">Login</a></li>
                             <li><a href="{{ URL::to('/register') }}">Register</a></li>
+                            @endif
                         </ul>
                     </nav>
                 </div>

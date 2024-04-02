@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 /*
@@ -20,3 +22,8 @@ Route::get('/cart', [MainController::class, 'cart'])->name('cart');
 Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');
 Route::get('/product', [MainController::class, 'singleProduct'])->name('singleProduct');
+Route::get('/register', [MainController::class, 'register'])->name('register');
+Route::get('/login', [MainController::class, 'login'])->name('login');
+Route::post('/registerUser', [MainController::class, 'registerUser'])->name('registerUser');
+Route::post('/loginUser', [MainController::class, 'loginUser'])->name('loginUser');
+Route::get('/logout', [MainController::class, 'logout'])->name('logout');

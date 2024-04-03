@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Products;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -89,4 +90,26 @@ class MainController extends Controller
             return redirect()->back()->with('error', 'Invalid Email or Password');
         }
     }
+  public function addToCart(Request $data)
+  {
+      if (session()->has('id')) {
+          $item = new Cart();
+          $item->quantity = $data->input('quantity'); // Corrected access to quantity
+          $item->product_id = $data->input('id'); // Corrected access to product_id
+          $item->customer_id = session()->get('id');
+          $item->save();
+          return redirect()->back()->with('success', 'Product added to cart successfully!');
+      } else {
+          return redirect('login')->with('error', 'Please login to add product to cart.');
+      }
+  }
+  
+  // In your controller method that returns the form page
+public function showFormPage()
+{
+    return response()
+        ->view('your_form_page')
+        ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+}
+
 }

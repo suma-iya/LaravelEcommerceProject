@@ -31,8 +31,9 @@ class MainController extends Controller
     public function shop(){
         return view('shop');
     }
-    public function singleProduct(){
-        return view('singleProduct');
+    public function singleProduct($id){
+        $product = Products::find($id);
+        return view('singleProduct',compact('product'));
     }
     public function register(){
         return view('register');

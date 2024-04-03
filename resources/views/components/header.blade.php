@@ -12,18 +12,19 @@
     <title>Male-Fashion | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" type="text/css">
+
 </head>
 
 <body>
@@ -50,10 +51,11 @@
             </div>
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
+            <a href="#"><img src="{{ URL::asset('img/icon/heart.png') }}" alt=""></a>
+            <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
+
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
@@ -69,7 +71,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><img src="{{ URL::asset('img/logo.png') }}" alt=""></a>
+
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -97,9 +100,10 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                    <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ URL::asset('img/icon/heart.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""> <span>0</span></a>
+
                         <div class="price">$0.00</div>
                     </div>
                 </div>

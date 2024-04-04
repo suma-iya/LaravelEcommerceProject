@@ -28,6 +28,7 @@ Route::get('/login', [MainController::class, 'login'])->name('login');
 Route::post('/registerUser', [MainController::class, 'registerUser'])->name('registerUser');
 Route::post('/loginUser', [MainController::class, 'loginUser'])->name('loginUser');
 Route::get('/logout', [MainController::class, 'logout'])->name('logout');
+Route::get('/deleteCartItem/{id}',[MainController::class,'deleteCartItem']);
 Route::get('/single/{id}', [App\Http\Controllers\MainController::class, 'singleProduct'])->name('singleProduct');
 Route::post('/addToCart', [MainController::class, 'addToCart'])->name('addToCart');
 Route::get('/your-form-page', [MainController::class, 'showFormPage']);

@@ -113,11 +113,18 @@ class MainController extends Controller
   }
   
   // In your controller method that returns the form page
-public function showFormPage()
-{
-    return response()
-        ->view('your_form_page')
-        ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
-}
+    public function showFormPage()
+    {
+        return response()
+            ->view('your_form_page')
+            ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+    }
+    public function deleteCartItem($id){
+        $item = Cart::find($id);
+        $item->delete;
+        return redirect()->back()->with('success', '1 Product has been deleted from cart successfully!');
+    }
 
 }
+
+

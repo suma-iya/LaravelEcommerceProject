@@ -24,6 +24,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="shopping__cart__table">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+
                         <table>
                             <thead>
                                 <tr>
@@ -52,7 +58,7 @@
                                         </div>
                                     </td>
                                     <td class="cart__price">$ {{$item->price * $item->quantity}}</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                    <td class="cart__close"><a href="{{URL::to('deleteCartItem/'.$item->id)}}"><i class="fa fa-close"></i></td>
                                 </tr>
                                 @endforeach
                             </tbody>

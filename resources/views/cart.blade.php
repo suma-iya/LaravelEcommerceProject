@@ -53,9 +53,14 @@
                                         </div>
                                     </td>
                                     <td class="quantity__item">
+                                        <form action="{{URL::to('updateCart')}}" method="post">
+                                            @csrf
                                         <div class="quantity">
                                             <input type="number" class="form-control" min = "1" max = "{{$item->pQuantity}}" name = "quantity" value="{{$item->quantity}}">
                                         </div>
+                                            <input type="hidden" name="id" value="{{$item->id}}">
+                                            <input type="submit" name="update" class="btn btn-success btn-block" value="Update">
+                                        </form>
                                     </td>
                                     <td class="cart__price">$ {{$item->price * $item->quantity}}</td>
                                     <td class="cart__close"><a href="{{URL::to('deleteCartItem/'.$item->id)}}"><i class="fa fa-close"></i></td>

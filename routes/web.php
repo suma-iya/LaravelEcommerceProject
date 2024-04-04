@@ -32,3 +32,4 @@ Route::get('/deleteCartItem/{id}',[MainController::class,'deleteCartItem']);
 Route::get('/single/{id}', [App\Http\Controllers\MainController::class, 'singleProduct'])->name('singleProduct');
 Route::post('/addToCart', [MainController::class, 'addToCart'])->name('addToCart');
 Route::get('/your-form-page', [MainController::class, 'showFormPage']);
+Route::post('/updateCart', [MainController::class, 'updateCart'])->name('updateCart');

@@ -121,9 +121,19 @@ class MainController extends Controller
     }
     public function deleteCartItem($id){
         $item = Cart::find($id);
-        $item->delete;
+        $item->delete();
         return redirect()->back()->with('success', '1 Product has been deleted from cart successfully!');
     }
+    public function updateCart(Request $data){
+        if(session()->has('id')){
+            $item = Cart::find($data->input('id'));
+            $item->quantity = $data->input('quantity');
+            $item->save();
+            return redirect()->back()->with('success', 'Cart updated successfully!');
+        }else{
+            return redirect('login')->with('error', 'Please login to update cart.');
+        }
+    }        
 
 }
 

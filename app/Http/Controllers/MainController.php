@@ -8,6 +8,8 @@ use App\Models\Products;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class MainController extends Controller
 {
@@ -24,8 +26,14 @@ class MainController extends Controller
 
     }
     public function cart(){
-        return view('cart');
+        $cartItems = DB::table('products')
+            ->join('carts', 'carts.product_id', '=', 'products.id') // Corrected join condition
+            ->select('products.title','products.quantity as pQuantity','products.price', 'products.picture', 'carts.*')
+            ->where('carts.customer_id', session()->get('id'))
+            ->get();
+        return view('cart', compact('cartItems'));
     }
+    
     public function checkout(){
         return view('checkout');
     }

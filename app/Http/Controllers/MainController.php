@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Products;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,8 +36,33 @@ class MainController extends Controller
         return view('cart', compact('cartItems'));
     }
     
-    public function checkout(){
-        return view('checkout');
+    public function checkout(Request $data){
+        if(session()->has('id')){
+            $order = new Order();
+            $order->status="Pending";
+            $order->customerId = session()->get('id');
+            $order->bill=$data->input('bill');
+            $order->address=$data->input('address');
+            $order->fullname=$data->input('fullname');
+            $order->phone=$data->input('phone');
+            if($order->save()){
+                $carts = Cart::where('customer_id', session()->get('id'))->get();
+                foreach($carts as $item){
+                    $product = Products::find($item->product_id);
+                    $orderItem = new OrderItem();
+                    $orderItem->product_id = $item->product_id;
+                    $orderItem->quantity = $item->quantity;
+                    $orderItem->price=$product->price;
+                    $orderItem->order_id = $order->id;
+                    $orderItem->save();
+                    $item->delete();
+                }
+            }
+            return redirect()->back()->with('success', 'Order placed successfully!');
+        }else{
+            return redirect('login')->with('error', 'Please login to place order.');
+        }
+        // return view('checkout');
     }
     public function shop(){
         return view('shop');

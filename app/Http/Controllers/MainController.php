@@ -160,7 +160,28 @@ class MainController extends Controller
         }else{
             return redirect('login')->with('error', 'Please login to update cart.');
         }
-    }        
+    }
+    public function profile(){
+        if(session()->has('id')){
+            $user = User::find(session()->get('id'));
+            return view('profile',compact('user'));    
+        }
+        return redirect('login')->with('error', 'Please login to view profile.');      
+      }
+    public function updateUser(Request $request){
+        $user = User::find(session()->get('id'));
+        $user->Fullname = $request->input('fullname');
+        $user->Password = Hash::make($request->input('password'));
+        if($request->file('file')!=null){
+            $user->picture = $request->file('file')->getClientOriginalName();
+            $request->file('file')->move('uploads/profile/', $user->picture);
+        }
+        if($user->save()){
+            return redirect()->back()->with('success', 'Profile updated successfully!');
+        }else{
+            return redirect()->back()->with('error', 'Failed to update profile.');
+        }
+    }
 
 }
 

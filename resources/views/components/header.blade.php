@@ -86,7 +86,7 @@
                                 <!-- <li><a href="{{ URL::to('/shop-details') }}">Shop Details</a></li> -->
                                 <li><a href="{{ URL::to('/cart') }}">Shopping Cart</a></li>
                                 <li><a href="{{ URL::to('/checkout') }}">Check Out</a></li>
-                                <!-- <li><a href="{{ URL::to('/blog-details') }}">Blog Details</a></li> -->
+                                <li><a href="{{ URL::to('profile') }}">My Account</a></li>
                             </ul>
                         </li>
                             @if(session()->has('id'))

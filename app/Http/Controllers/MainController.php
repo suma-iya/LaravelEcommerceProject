@@ -11,7 +11,7 @@ use App\Models\OrderItem;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Terwind\Components\raw;
 
 class MainController extends Controller
 {

@@ -10,7 +10,7 @@
               <div class="card">
                                       <div class="card-body">
                                         <!-- Button to Open the Modal -->
-                      <p class="card-title mb-0">Top Products</p>
+                      <p class="card-title mb-0">Our Orders</p>
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewModel">
                         Add New
                       </button>
@@ -66,87 +66,70 @@
                     <table class="table table-striped table-borderless">
                       <thead>
                         <tr>
-                          <th>Title</th>
-                          <th>Picture</th>
-                          <th>price</th>
-                          <th>Quantity</th>
-                          <th>Category</th>
-                          <th>Type</th>
-                          <th>Update</th>
-                          <th>Delete</th>
+                          <th>Customer</th>
+                          <th>Bill</th>
+                          <th>Phone</th>
+                          <th>Address</th>
+                          <th>Order Status</th>
+                          <th>Order Date</th>
+                          <th>Action</th>
                         </tr>  
                       </thead>
                       <tbody>
                         @php
                             $i=0;
                         @endphp
-                        @foreach($products as $item)
+                        @foreach($orders as $item)
                         @php
                             $i++;
                         @endphp
                         <tr>
-                          <td>{{$item->title}}</td>
-                          <td><img src="{{URL::asset('uploads/profile/products/'.$item->picture)}}" width ="100px" alt=""></td>
-                          <td class="font-weight-bold">{{$item->price}}</td>
-                          <td>{{$item->quantity}}</td>
-                          <td class="font-weight-medium"><div class="badge badge-success">{{$item->category}}</div></td>
-                          <td class="font-weight-medium"><div class="badge badge-info">{{$item->type}}</div></td>
-                          <td class="font-weight-medium">
+                          <td>{{$item->fullname}}</td>
+                        
+                     
+                          <td class="font-weight-bold">{{$item->bill}}</td>
+                          <td>{{$item->phone}}</td>
+                          <td>{{$item->address}}</td>                          
+                          <td class="font-weight-medium"><div class="badge badge-success">{{$item->status}}</div></td>
+                          <td class="font-weight-medium"><div class="badge badge-info">{{$item->created_at}}</div></td>
+                          <!-- <td class="font-weight-medium">
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModel{{ $i }}">
                             Update
-                            </button>
+                            </button> -->
 
-                            <!-- The Modal -->
+                            <!-- The Modal
                             <div class="modal" id="updateModel{{ $i }}">
                               <div class="modal-dialog">
-                                <div class="modal-content">
+                                <div class="modal-content"> -->
 
                                   <!-- Modal Header -->
-                                  <div class="modal-header">
+                                  <!-- <div class="modal-header">
                                     <h4 class="modal-title">Update Product</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                   </div>
 
-                                  <!-- Modal body -->
+                                  Modal body
                                   <div class="modal-body">
-                                  <form action="{{ URL::to('UpdateProduct') }}" method="post" enctype="multipart/form-data">
-                                      @csrf
-                                      <label for="">Title</label>
-                                      <input type="text" name="title" value="{{$item->title}}" placeholder="Enter Title" class="form-control mb-2" id="" >
-                                      <label for="">Price</label>
-                                      <input type="text" name="price" value="{{$item->price}}" placeholder="Enter Price ($)" class="form-control mb-2" id="" >
-                                      <label for="">Quantity</label>
-                                      <input type="number" name="quantity" value="{{$item->quantity}}" placeholder="Enter Quantity" class="form-control mb-2" id="" >
-                                      <label for="">Picture</label>
-                                      <input type="file" name="file" class="form-control mb-2" id="">
-                                      <label for="">Description</label>
-                                      <input type="text" name="description" value="{{$item->description}}" placeholder="Enter description" class="form-control mb-2" id="">
-                                      <label for="">Category</label>
-                                      <select name="category" id="" class="form-control mb-2">
-                                        <option value="{{$item->category}}">{{$item->category}}</option>
-                                        <option value="Rack">Racks</option>
-                                        <option value="Basket">Baskets</option>
-                                        <option value="Jar">Jars</option>
-                                      </select>
-                                      <label for="">Type</label>
-                                      <select name="type" id="" class="form-control mb-2">
-                                        <option value="{{$item->type}}">{{$item->type}}</option>
-                                        <option value="Best Sellers">Best Sellers</option>
-                                        <option value="new-arrivals">New Arrivals</option>
-                                        <option value="sale">Sale</option>
-                                      </select>
-                                      <input type="hidden" name="id" value="{{$item->id}}">
-                                      <input type="submit" name="save" class="btn btn-success" value="Save Changes" id="">
-                                    </form>
+                                 
                                   </div>
 
                                 </div>
                               </div>
                             </div>
-                      
-                          </td>
+                       -->
+                          <!-- </td> -->
                           <td>
-                            <a href="{{URL::to('deleteProduct/'.$item->id)}}" class="btn btn-danger">Delete</a>
+                                @if($item->status == 'Paid')
+                                    <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}" class="btn btn-success">Accept</a>
+                                    <a href="{{ URL::to('changeOrderStatus/Rejected/'.$item->id) }}" class="btn btn-danger">Reject</a>
+                                @elseif($item->status == 'Accepted')
+                                    <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}">Completed</a>
+                                @elseif($item->status == 'Rejected')
+                                    <a href="{{ URL::to('changeOrderStatus/Rejected/'.$item->id) }}" style="color: red;">Rejected</a>
+                                @else
+                                    <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}" style="color: red;">Not Paid Yet</a>
+                                @endif
+
                           </td>
                         </tr>
                        @endforeach

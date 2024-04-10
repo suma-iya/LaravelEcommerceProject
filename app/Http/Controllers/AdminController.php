@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     //
@@ -88,5 +89,27 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
-    
+    public function orders(){
+        if(session()->get('type')=='Admin'){
+            $orders = DB::table('users')
+            ->join('orders', 'orders.customerId', '=', 'users.id')
+            ->select('orders.*', 'users.fullname','users.email')
+            ->get();    
+            return view('Dashboard.orders', compact('orders'));
+        }else { 
+            return redirect()->back();
+        }
+    }
+
+    public function changeOrderStatus($status, $id){
+       
+        if(session()->get('type')=='Admin'){
+            $order = Order::find($id);
+            $order->status = $status;
+            $order->save();
+            return redirect()->back()->with('success', 'Order Status Updated Successfully!');
+        }else{
+            return redirect()->back();
+        }
+    }
 }

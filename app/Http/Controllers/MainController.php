@@ -80,7 +80,7 @@ class MainController extends Controller
     public function logout(){
         session()->forget('id');
         session()->forget('type');
-        return redirect('/');
+        return redirect('/login');
     }
     public function registerUser(Request $request)
     {
@@ -119,6 +119,8 @@ class MainController extends Controller
     
             if($user->type == "Customer") {
                 return redirect('/');
+            }else if($user->type == "Admin"){
+                return redirect('/admin');
             }
             // You might want to handle redirection for other user types here
         } else {

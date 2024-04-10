@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\AdminController;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,16 @@ use Illuminate\Support\Facades\Hash;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Admin ROUTES
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/adminProducts', [AdminController::class, 'products']);
+Route::get('/adminProfile', [AdminController::class, 'profile']);
+Route::get('/ourCustomers', [AdminController::class, 'customers']);
+Route::get('/deleteProduct/{id}', [AdminController::class, 'deleteProduct']);
+Route::POST('/AddNewProduct', [AdminController::class, 'AddNewProduct'])->name('AddNewProduct');
+Route::POST('/UpdateProduct', [AdminController::class, 'UpdateProduct']); 
 
+// Customer ROUTES
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/cart', [MainController::class, 'cart'])->name('cart');
 // Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');

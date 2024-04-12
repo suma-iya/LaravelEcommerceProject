@@ -9,7 +9,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>NMPI | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,18 +37,7 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
-                <a href="#">FAQs</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
+           
         </div>
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
@@ -71,7 +60,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                    <a href="./index.html"><img src="{{ URL::asset('img/logo.png') }}" alt=""></a>
+                    <a href="./index.html"><h6 style="color: blue;"><i>NMPI</i></h6></a>
 
                     </div>
                 </div>

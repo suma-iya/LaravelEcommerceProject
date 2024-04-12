@@ -27,6 +27,12 @@ class MainController extends Controller
         return view('index', compact('allProducts', 'newArrivals', 'hotSales'));
 
     }
+
+    public function shop(){
+        $allProducts = Products::all();
+        return view('shop', compact('allProducts'));
+    }
+
     public function cart(){
         $cartItems = DB::table('products')
             ->join('carts', 'carts.product_id', '=', 'products.id') // Corrected join condition
@@ -63,9 +69,6 @@ class MainController extends Controller
             return redirect('login')->with('error', 'Please login to place order.');
         }
         // return view('checkout');
-    }
-    public function shop(){
-        return view('shop');
     }
     public function singleProduct($id){
         $product = Products::find($id);

@@ -60,6 +60,7 @@ class AdminController extends Controller
         $products->picture = $request->file('file')->getClientOriginalName();
         $request->file('file')->move('uploads/profile/products/', $products->picture);
         $products->save();
+        return redirect()->back();
       }
       else{
         return redirect()->back();

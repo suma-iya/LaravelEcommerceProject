@@ -18,7 +18,7 @@ class AdminController extends Controller
             return view('Dashboard.index');
         }
         else{
-            return redirect()->back();
+          //  return redirect()->back();
         }
     }
     public function products(){

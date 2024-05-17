@@ -24,7 +24,7 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <a href="#" class="add-cart">+ Add To Cart</a>
+                            <h4>{{$item->title}}</h4>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>

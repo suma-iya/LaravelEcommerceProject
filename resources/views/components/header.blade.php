@@ -9,7 +9,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NMPI | Template</title>
+    <title>NMPI</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
             <a href="#"><img src="{{ URL::asset('img/icon/heart.png') }}" alt=""></a>
-            <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""> <span>0</span></a>
+            <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""></a>
             <div class="price">$0.00</div>
 
         </div>
@@ -74,7 +74,7 @@
                                 <!-- <li><a href="{{ URL::to('/about') }}">About Us</a></li> -->
                                 <!-- <li><a href="{{ URL::to('/shop-details') }}">Shop Details</a></li> -->
                                 <li><a href="{{ URL::to('/cart') }}">Shopping Cart</a></li>
-                                <li><a href="{{ URL::to('/checkout') }}">Check Out</a></li>
+                                
                                 <li><a href="{{ URL::to('profile') }}">My Account</a></li>
                             </ul>
                         </li>

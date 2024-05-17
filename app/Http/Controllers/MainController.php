@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Terwind\Components\raw;
+use App\Mail\Testing;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class MainController extends Controller
 {
@@ -188,6 +191,19 @@ class MainController extends Controller
         }
     }
 
+    public function testMail(Request $request){
+        $request->validate([
+            'email_body' => 'required|string'
+        ]);
+
+        $details = [
+            'title' => 'This is a testing mail',
+            'body' => $request->input('email_body')
+        ];
+
+        Mail::to("suma2007102@stud.kuet.ac.bd")->send(new Testing($details));
+        return redirect('/')->with('success', 'Email sent successfully!');
+    }
 }
 
 

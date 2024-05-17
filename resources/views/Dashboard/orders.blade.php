@@ -120,12 +120,15 @@
                           <!-- </td> -->
                           <td>
                                 @if($item->status == 'Paid')
-                                    <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}" class="btn btn-success">Accept</a>
-                                    <a href="{{ URL::to('changeOrderStatus/Rejected/'.$item->id) }}" class="btn btn-danger">Reject</a>
-                                @elseif($item->status == 'Accepted')
+                                    <a href="{{ URL::to('changeOrderStatus/Delivered/'.$item->id) }}" class="btn btn-danger">Deliver</a>
+                                    <!-- <a href="{{ URL::to('changeOrderStatus/Rejected/'.$item->id) }}" class="btn btn-danger">Reject</a> -->
+                                @elseif($item->status == 'Delivered')
                                     <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}">Completed</a>
-                                @elseif($item->status == 'Rejected')
-                                    <a href="{{ URL::to('changeOrderStatus/Rejected/'.$item->id) }}" style="color: red;">Rejected</a>
+                                @elseif($item->status == 'Pending')
+                                    <a href="{{ URL::to('changeOrderStatus/Delivered/'.$item->id) }}" class="btn btn-success">Pay & Deliver</a>
+                                    <a href="{{ URL::to('changeOrderStatus/Returned/'.$item->id) }}"class="btn btn-danger">Return</a>
+                                @elseif($item->status == 'Returned')
+                                    <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}" style="color: red;">Return Accepted</a>
                                 @else
                                     <a href="{{ URL::to('changeOrderStatus/Accepted/'.$item->id) }}" style="color: red;">Not Paid Yet</a>
                                 @endif
@@ -143,4 +146,4 @@
         
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-   <x-adminfooter/>
+ <x-adminfooter/> 

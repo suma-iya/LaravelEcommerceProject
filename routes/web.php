@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 // Admin ROUTES
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
 Route::get('/adminProducts', [AdminController::class, 'products']);
 Route::get('/adminProfile', [AdminController::class, 'profile']);
 Route::get('/ourCustomers', [AdminController::class, 'customers']);
@@ -34,7 +34,7 @@ Route::POST('/UpdateProduct', [AdminController::class, 'UpdateProduct']);
 // Customer ROUTES
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/cart', [MainController::class, 'cart'])->name('cart');
-// Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [MainController::class, 'checkout'])->name('checkout');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');
 // Route::get('/product', [MainController::class, 'singleProduct'])->name('singleProduct');
 Route::get('/register', [MainController::class, 'register'])->name('register');
@@ -54,3 +54,4 @@ Route::post('/updateUser', [MainController::class, 'updateUser'])->name('updateU
 Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe');
 Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe-post');
 
+Route::get('/testMail',[MainController::class,'testMail']);

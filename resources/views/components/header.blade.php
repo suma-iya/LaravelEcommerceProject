@@ -9,21 +9,22 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>NMPI</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" type="text/css">
+
 </head>
 
 <body>
@@ -36,24 +37,14 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
-                <a href="#">FAQs</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
+           
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
+            <a href="#"><img src="{{ URL::asset('img/icon/heart.png') }}" alt=""></a>
+            <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""></a>
             <div class="price">$0.00</div>
+
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
@@ -69,7 +60,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><h6 style="color: blue;"><i>NMPI</i></h6></a>
+
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -81,9 +73,9 @@
                             <ul class="dropdown">
                                 <!-- <li><a href="{{ URL::to('/about') }}">About Us</a></li> -->
                                 <!-- <li><a href="{{ URL::to('/shop-details') }}">Shop Details</a></li> -->
-                                <li><a href="{{ URL::to('/shopping-cart') }}">Shopping Cart</a></li>
-                                <li><a href="{{ URL::to('/checkout') }}">Check Out</a></li>
-                                <!-- <li><a href="{{ URL::to('/blog-details') }}">Blog Details</a></li> -->
+                                <li><a href="{{ URL::to('/cart') }}">Shopping Cart</a></li>
+                                
+                                <li><a href="{{ URL::to('profile') }}">My Account</a></li>
                             </ul>
                         </li>
                             @if(session()->has('id'))
@@ -97,9 +89,10 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                    <a href="#" class="search-switch"><img src="{{ URL::asset('img/icon/search.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ URL::asset('img/icon/heart.png') }}" alt=""></a>
+                    <a href="#"><img src="{{ URL::asset('img/icon/cart.png') }}" alt=""> <span>0</span></a>
+
                         <div class="price">$0.00</div>
                     </div>
                 </div>

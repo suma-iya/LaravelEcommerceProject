@@ -25,14 +25,8 @@
                         </div>
                         <div class="product__item__text">
                             <h4>{{$item->title}}</h4>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>{{$item->price}}</h5>
+                            
+                            <h5>${{$item->price}}</h5>
                           
                         </div>
                     </div>

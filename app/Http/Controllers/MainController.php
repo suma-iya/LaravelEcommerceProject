@@ -9,7 +9,6 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Terwind\Components\raw;
 use App\Mail\Testing;
@@ -20,16 +19,14 @@ class MainController extends Controller
 {
     //
     public function index(){
-        $allProducts = Products::all();
-        $newArrivals = Products::where('type','new-arrivals')->get();
-        $hotSales = Products::where('type','sale')->get();
-        $allProducts = Products::all();
-        // $allProducts = Product::all();
-
-        // dd($allProducts);
-        return view('index', compact('allProducts', 'newArrivals', 'hotSales'));
-
+        $newArrivals = Products::where('type', 'new-arrivals')->get();
+        $hotSales = Products::where('type', 'sale')->get();
+        $bestSeller = Products::where('type', 'BestSellers')->get();
+        $latestProducts = Products::latest()->take(3)->get();
+    
+        return view('index', compact('latestProducts', 'bestSeller', 'newArrivals', 'hotSales'));
     }
+    
 
     public function shop(){
         $allProducts = Products::all();
@@ -147,13 +144,7 @@ class MainController extends Controller
       }
   }
   
-  // In your controller method that returns the form page
-    public function showFormPage()
-    {
-        return response()
-            ->view('your_form_page')
-            ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
-    }
+ 
     public function deleteCartItem($id){
         $item = Cart::find($id);
         $item->delete();
@@ -164,6 +155,7 @@ class MainController extends Controller
             $item = Cart::find($data->input('id'));
             $item->quantity = $data->input('quantity');
             $item->save();
+   
             return redirect()->back()->with('success', 'Cart updated successfully!');
         }else{
             return redirect('login')->with('error', 'Please login to update cart.');

@@ -45,9 +45,9 @@ Route::get('/logout', [MainController::class, 'logout'])->name('logout');
 Route::get('/deleteCartItem/{id}',[MainController::class,'deleteCartItem']);
 Route::get('/single/{id}', [MainController::class, 'singleProduct'])->name('singleProduct');
 Route::post('/addToCart', [MainController::class, 'addToCart'])->name('addToCart');
-Route::get('/your-form-page', [MainController::class, 'showFormPage']);
+
 Route::post('/updateCart', [MainController::class, 'updateCart'])->name('updateCart');
-// Route::post('/checkout', [MainController::class, 'checkout'])->name('checkout');
+// Route::post('/scheckout', [MainController::class, 'checkout'])->name('checkout');
 Route::get('/profile', [MainController::class, 'profile'])->name('profile');
 Route::post('/updateUser', [MainController::class, 'updateUser'])->name('updateUser');
 

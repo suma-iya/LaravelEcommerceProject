@@ -41,14 +41,7 @@
                     <div class="col-lg-8">
                         <div class="product__details__text">
                             <h4>{{$product->title}}</h4>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span> - 5 Reviews</span>
-                            </div>
+                           
                             <h3>{{$product->price}}.00 </h3>
                             <p>{{$product->description}}</p>
                             <form action="{{URL::to('/addToCart') }}" method="POST">
